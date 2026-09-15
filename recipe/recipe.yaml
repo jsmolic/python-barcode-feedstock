@@ -1,21 +1,21 @@
 schema_version: 1
 
 context:
-  name: python-barcode
-  version: "0.13.1"
+  version: 0.16.1
+  build_number: '0'
 
 package:
-  name: ${{ name|lower }}
+  name: python-barcode
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: fafba4aa24e9d969777be521c294ff18f6c2b36ad63b5fc2f2108d972e23b252
+- url: https://files.pythonhosted.org/packages/source/p/python-barcode/python_barcode-${{ version }}.tar.gz
+  sha256: 665ed09516b0088b5593061c5ac8662caa0b08d56bdad328388b1cab39939ac5
 
 build:
-  number: 1
+  number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     entry_points:
       - python-barcode = barcode.pybarcode:main
